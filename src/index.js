@@ -10,8 +10,8 @@ const io = require('socket.io').listen(server);
 // const path = require('path');
 // app.use(express.static(path.join(__dirname, '../public')));
 
-server.listen(8080, () => {
-	console.log('Server running on port 8080');
+server.listen(9090, () => {
+	console.log('Server running on port 9090');
 });
 
 const clients = {};
@@ -38,8 +38,17 @@ io.on('connection', function connection(socket) {
 		}
 	});
 
+	socket.on('getConnectedUsers', () => {
+		let usersToReturn = Object.entries(clients).map(client => {
+
+			const firstClient = client[1];
+			return (firstClient.socketId && firstClient.user) ? firstClient.user : null;
+		});
+		socket.emit('setConnectedUsers', usersToReturn);
+	});
+
 	socket.on('disconnect', () => {
-		console.log('Disconnected');
+		console.log(clients[id].user.firstName + ' ' + clients[id].user.lastName + ' disconnected');
 		delete clients[id];
 	});
 });
