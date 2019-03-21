@@ -8,10 +8,12 @@ const morgan = require('morgan');
 const socketioapp = require("./socketIO/socketioapp");
 const apiapp = require("./API/apiapp");
 
+const corsOptions = { origin: 'https://meetus.netlify.com/', optionsSuccessStatus: 200}            
+
 const app = express();
 app.use(morgan('combined'));
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors(corsOptions))
 const server = http.createServer(app);
 const io = require('socket.io').listen(server);
 
