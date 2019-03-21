@@ -25,6 +25,6 @@ const io = require('socket.io').listen(server);
 apiapp.api(app);
 socketioapp.socketIO(io);
 
-server.listen(8080, () => {
-    console.log('Server running on port 8080');
+server.listen(80, () => {
+    console.log('Server running on port 80');
 });
