@@ -9,7 +9,7 @@ const socketioapp = require("./socketIO/socketioapp");
 const apiapp = require("./API/apiapp");
 
 const corsOptions = {
-  origin: "meetus.netlify.com",
+  origin: "https://meetus.netlify.com",
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   allowedHeaders: "Content-Type",
   optionsSuccessStatus: 200
