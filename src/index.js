@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.use(cors());
 const server = http.createServer(app);
 // const io = require('socket.io').listen(server);
-const io = require('socket.io')(3000);
+const io = require('socket.io').listen(server);
 
 apiapp.api(app);
 socketioapp.socketIO(io);
