@@ -22,8 +22,8 @@ app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(cors());
 const server = http.createServer(app);
-// const io = require('socket.io').listen(server);
 const io = require('socket.io').listen(server);
+io.set('origins', 'https://meetus.netlify.com:*');
 
 apiapp.api(app);
 socketioapp.socketIO(io);
